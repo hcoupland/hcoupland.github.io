@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Helen Coupland - Artist Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="/" class="logo-wrap"><img src="images/logo-attempt1.svg" alt="Logo" class="navbar_logo"></a>
+                <div class="navbar_links">
+                    <a href="/" class="navbar_link">Works</a>
+                    <a href="about.html" class="navbar_link">About</a>
+                    <a href="archive.html" class="navbar_link">Archive</a>
+                    <a href="contact.html" class="navbar_link">Contact</a>
+                </div>
+                <div class="navbar_hamburger-wrap">
+                    <div class="navbar_hamburger"><span></span><span></span></div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-wrapper">
+            <header class="section_home-header fade-scroll">
+                <img src="images/avatar-1080.jpg" alt="profile photo" class="home-header_image" />
+            </header>
+
+            <section class="section_work-list">
+                <div class="work-list_list">
+                    <div class="work-list_item fade-scroll">
+                        <a href="/work/burning-man" class="work-list_block">
+                            <img src="images/dive-in-1080.jpg" alt="Dive-In 48 KBH Filmmaking Marathon"
+                                class="work-list_image" />
+                            <div class="work-list_infos">
+                                <h2>Dive-In 48 KBH Filmmaking Marathon</h2>
+                                <div>Writer, Director</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Repeat for other items -->
+                </div>
+            </section>
+
+            <footer class="section_home-cta">
+                <div>Feel free to reach out</div>
+                <a href="/contact" class="button">
+                    <div class="button-text">Get in touch</div>
+                    <div class="button-hover-bg"></div>
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <script src="interactions.js"></script>
+</body>
+
+</html>
