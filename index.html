@@ -160,54 +160,81 @@
     }
 
     .work-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding: 3rem 0;
+      max-width: 100vw;
+      margin: 0;
     }
 
     .work-card {
-      background: #181818;
-      border-radius: 16px;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0 auto;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
       overflow: hidden;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 0;
       cursor: pointer;
+      transition: box-shadow 0.2s;
       position: relative;
     }
 
+    .work-card:focus-within,
     .work-card:hover {
-      transform: translateY(-8px) scale(1.03) rotate(-1deg);
       box-shadow: 0 8px 32px rgba(230, 126, 34, 0.15);
     }
 
-    .work-card img {
+    .work-card a {
+      display: block;
       width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: filter 0.3s;
+      text-decoration: none;
+      color: inherit;
+      outline: none;
     }
 
-    .work-card:hover img {
+    .work-card img {
+      width: 100vw;
+      max-width: 100%;
+      height: 40vw;
+      min-height: 220px;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.3s, transform 0.3s;
+    }
+
+    .work-card:hover img,
+    .work-card:focus-within img {
       filter: brightness(1.1) saturate(1.2);
+      transform: scale(1.03);
     }
 
     .work-info {
-      padding: 1.2rem;
+      position: absolute;
+      left: 2rem;
+      bottom: 2rem;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 1.2rem 2rem;
+      border-radius: 1rem;
+      color: #fff;
+      max-width: 90vw;
     }
 
     .work-info h2 {
       margin: 0 0 0.5rem 0;
-      font-size: 1.3rem;
+      font-size: 2rem;
       color: var(--accent);
+      text-shadow: 0 2px 8px #000;
     }
 
     .work-info p {
       margin: 0;
-      color: #ccc;
-      font-size: 1rem;
+      color: #eee;
+      font-size: 1.1rem;
+      text-shadow: 0 1px 4px #000;
     }
 
     .cta-section {
@@ -258,6 +285,29 @@
         height: 140px;
       }
     }
+
+    @media (max-width: 700px) {
+      .work-card img {
+        height: 48vw;
+        min-height: 120px;
+        max-height: 220px;
+      }
+
+      .work-info {
+        left: 1rem;
+        bottom: 1rem;
+        padding: 0.8rem 1.2rem;
+        border-radius: 0.7rem;
+      }
+
+      .work-info h2 {
+        font-size: 1.2rem;
+      }
+
+      .work-info p {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 
@@ -289,32 +339,41 @@
   </header>
   <main>
     <section class="work-list">
-      <div class="work-card" tabindex="0">
-        <img src="images/dive-in-1080.jpg"
-          srcset="images/dive-in-500.jpg 500w, images/dive-in-800.jpg 800w, images/dive-in-1080.jpg 1080w, images/dive-in-1600.jpg 1600w, images/dive-in-2000.jpg 2000w, images/dive-in-2400.jpg 2400w"
-          sizes="(max-width: 700px) 90vw, 320px" alt="Dive-In 48 KBH Filmmaking Marathon" />
-        <div class="work-info">
-          <h2>Dive-In 48 KBH Filmmaking Marathon</h2>
-          <p>Writer, Director</p>
-        </div>
+      <div class="work-card">
+        <a href="burning-man.html">
+          <img src="images/dive-in-1080.jpg"
+            srcset="images/dive-in-500.jpg 500w, images/dive-in-800.jpg 800w, images/dive-in-1080.jpg 1080w, images/dive-in-1600.jpg 1600w, images/dive-in-2000.jpg 2000w, images/dive-in-2400.jpg 2400w"
+            sizes="100vw"
+            alt="Dive-In 48 KBH Filmmaking Marathon" />
+          <div class="work-info">
+            <h2>Dive-In 48 KBH Filmmaking Marathon</h2>
+            <p>Writer, Director</p>
+          </div>
+        </a>
       </div>
-      <div class="work-card" tabindex="0">
-        <img src="images/hands-1080.jpg"
-          srcset="images/hands-500.jpg 500w, images/hands-800.jpg 800w, images/hands-1080.jpg 1080w, images/hands-1600.jpg 1600w, images/hands-2000.jpg 2000w, images/hands-2400.jpg 2400w"
-          sizes="(max-width: 700px) 90vw, 320px" alt="Creative" />
-        <div class="work-info">
-          <h2>Creative</h2>
-          <p>Photography, Painting, Sketch</p>
-        </div>
+      <div class="work-card">
+        <a href="creative.html">
+          <img src="images/hands-1080.jpg"
+            srcset="images/hands-500.jpg 500w, images/hands-800.jpg 800w, images/hands-1080.jpg 1080w, images/hands-1600.jpg 1600w, images/hands-2000.jpg 2000w, images/hands-2400.jpg 2400w"
+            sizes="100vw"
+            alt="Creative" />
+          <div class="work-info">
+            <h2>Creative</h2>
+            <p>Photography, Painting, Sketch</p>
+          </div>
+        </a>
       </div>
-      <div class="work-card" tabindex="0">
-        <img src="images/dance-1080.jpg"
-          srcset="images/dance-500.jpg 500w, images/dance-800.jpg 800w, images/dance-1080.jpg 1080w, images/dance-1600.jpg 1600w, images/dance-2000.jpg 2000w, images/dance-2400.jpg 2400w"
-          sizes="(max-width: 700px) 90vw, 320px" alt="Vision" />
-        <div class="work-info">
-          <h2>Vision</h2>
-          <p>Writing</p>
-        </div>
+      <div class="work-card">
+        <a href="vision.html">
+          <img src="images/dance-1080.jpg"
+            srcset="images/dance-500.jpg 500w, images/dance-800.jpg 800w, images/dance-1080.jpg 1080w, images/dance-1600.jpg 1600w, images/dance-2000.jpg 2000w, images/dance-2400.jpg 2400w"
+            sizes="100vw"
+            alt="Vision" />
+          <div class="work-info">
+            <h2>Vision</h2>
+            <p>Writing</p>
+          </div>
+        </a>
       </div>
     </section>
     <section class="cta-section">
