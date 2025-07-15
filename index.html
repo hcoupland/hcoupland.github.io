@@ -9,12 +9,12 @@
   <meta property="twitter:title" content="Helen Coupland - Artist Profile" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="images/apple-icon.png" />
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0c2335;
       --secondary: #faf4f0;
-      --accent: #306594;
+      --accent: #367104;
     }
 
     * {
@@ -151,6 +151,7 @@
       font-size: 2.5rem;
       font-weight: 700;
       letter-spacing: 2px;
+      font-family: 'Playfair Display', serif;
     }
 
     .header p {
@@ -228,7 +229,23 @@
       margin: 0 0 0.5rem 0;
       font-size: 2rem;
       color: var(--accent);
-      text-shadow: 0 2px 8px #000;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 0 2px 12px #000, 0 0 8px #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .work-info h2::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: -0.5rem;
+      right: -0.5rem;
+      bottom: -0.5rem;
+      background: rgba(0, 0, 0, 0.35);
+      filter: blur(8px);
+      z-index: -1;
+      border-radius: 0.5rem;
     }
 
     .work-info p {
