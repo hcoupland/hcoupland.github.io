@@ -9,7 +9,8 @@
   <meta property="twitter:title" content="Helen Coupland - Artist Profile" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="images/apple-icon.png" />
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #000;
@@ -227,15 +228,22 @@
     .work-info h2 {
       margin: 0 0 0.5rem 0;
       font-size: 2rem;
-      color: var(--accent);
-      text-shadow: 0 2px 8px #000;
+      font-family: 'Montserrat', 'Inconsolata', monospace, Arial, sans-serif;
+      color: #ff5e62;
+      background: linear-gradient(90deg, #ff5e62 0%, #ff9966 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 16px #000, 0 0 8px #ff9966;
+      letter-spacing: 2px;
     }
 
     .work-info p {
       margin: 0;
-      color: #eee;
       font-size: 1.1rem;
-      text-shadow: 0 1px 4px #000;
+      font-family: 'Roboto', 'Inconsolata', monospace, Arial, sans-serif;
+      color: #fff;
+      text-shadow: 0 1px 8px #000, 0 0 4px #ff5e62;
+      letter-spacing: 1px;
     }
 
     .cta-section {
