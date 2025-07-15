@@ -14,7 +14,7 @@
     :root {
       --primary: #0c2335;
       --secondary: #faf4f0;
-      --accent: #4879ab;
+      --accent: #306594;
     }
 
     * {
@@ -394,14 +394,25 @@
     });
 
     // Banner images zoom on scroll
+    let lastScrollY = window.scrollY;
+
     window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+
       document.querySelectorAll('.work-card img').forEach(img => {
-        // Calculate scale based on scroll position (max 1.07)
-        const minScale = 1;
-        const maxScale = 1.07;
-        const scrollY = window.scrollY;
-        const maxScroll = 400; // Adjust for effect strength
-        let scale = minScale + (Math.min(scrollY, maxScroll) / maxScroll) * (maxScale - minScale);
+        // Base scale
+        let scale = 1;
+        // If scrolling down, zoom in; if up, zoom out
+        if (scrollingDown) {
+          // Zoom in, up to 1.07
+          scale = 1 + Math.min(currentScrollY, 400) / 400 * 0.07;
+        } else {
+          // Zoom out, down to 1
+          scale = 1 + Math.max(currentScrollY, 0) / 400 * 0.07;
+          scale = Math.max(1, scale - 0.07);
+        }
         img.style.transform = `scale(${scale})`;
       });
 
@@ -409,7 +420,7 @@
       if (profileImg) {
         const minScale = 0.8;
         const maxScale = 1;
-        const scrollY = window.scrollY;
+        const scrollY = currentScrollY;
         const maxScroll = 300;
         let scale = maxScale - (scrollY / maxScroll) * (maxScale - minScale);
         scale = Math.max(minScale, Math.min(maxScale, scale));
