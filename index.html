@@ -393,17 +393,28 @@
       if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('active');
     });
 
-    // Profile image zoom on scroll
-    const profileImg = document.getElementById('profileImg');
+    // Banner images zoom on scroll
     window.addEventListener('scroll', () => {
-      if (!profileImg) return;
-      const minScale = 0.8;
-      const maxScale = 1;
-      const scrollY = window.scrollY;
-      const maxScroll = 300;
-      let scale = maxScale - (scrollY / maxScroll) * (maxScale - minScale);
-      scale = Math.max(minScale, Math.min(maxScale, scale));
-      profileImg.style.transform = `scale(${scale})`;
+      document.querySelectorAll('.work-card img').forEach(img => {
+        // Calculate scale based on scroll position (max 1.07)
+        const minScale = 1;
+        const maxScale = 1.07;
+        const scrollY = window.scrollY;
+        const maxScroll = 400; // Adjust for effect strength
+        let scale = minScale + (Math.min(scrollY, maxScroll) / maxScroll) * (maxScale - minScale);
+        img.style.transform = `scale(${scale})`;
+      });
+
+      // Profile image zoom (keep as before)
+      if (profileImg) {
+        const minScale = 0.8;
+        const maxScale = 1;
+        const scrollY = window.scrollY;
+        const maxScroll = 300;
+        let scale = maxScale - (scrollY / maxScroll) * (maxScale - minScale);
+        scale = Math.max(minScale, Math.min(maxScale, scale));
+        profileImg.style.transform = `scale(${scale})`;
+      }
     });
 
     // Fun: Card keyboard focus effect
