@@ -9,13 +9,12 @@
   <meta property="twitter:title" content="Helen Coupland - Artist Profile" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="images/apple-icon.png" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0c2335;
-      --secondary: #f2e8e3;
-      --accent: #6aaf25;
+      --secondary: #faf4f0;
+      --accent: #87a2d5;
     }
 
     * {
@@ -24,7 +23,7 @@
 
     body {
       margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
+      font-family: 'Inconsolata', monospace, Arial, sans-serif;
       background: var(--primary);
       color: var(--secondary);
     }
@@ -129,18 +128,14 @@
     }
 
     .profile-img-wrap {
-      width: 100%;
-      max-width: 480px;
-      height: 320px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      /* Remove border-radius and background */
-      border-radius: 0;
-      background: none;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1.5rem;
+      transition: box-shadow 0.3s;
+      background: #fff;
     }
 
     .profile-img {
@@ -149,25 +144,19 @@
       object-fit: cover;
       transition: transform 0.4s cubic-bezier(.4, 0, .2, 1);
       will-change: transform;
-      display: block;
     }
 
     .header h1 {
       margin: 0;
-      font-size: 2.7rem;
-      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 2.5rem;
       font-weight: 700;
       letter-spacing: 2px;
-      color: #ff9966;
-      text-shadow: 0 2px 16px #000, 0 0 8px #ff9966;
     }
 
     .header p {
       margin: 0.5rem 0 0 0;
-      font-size: 1.3rem;
-      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.2rem;
       color: #e0e0e0;
-      letter-spacing: 1px;
     }
 
     .work-list {
@@ -238,22 +227,15 @@
     .work-info h2 {
       margin: 0 0 0.5rem 0;
       font-size: 2rem;
-      font-family: 'Montserrat', 'Inconsolata', monospace, Arial, sans-serif;
-      color: #ff5e62;
-      background: linear-gradient(90deg, #ff5e62 0%, #ff9966 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 16px #000, 0 0 8px #ff9966;
-      letter-spacing: 2px;
+      color: var(--accent);
+      text-shadow: 0 2px 8px #000;
     }
 
     .work-info p {
       margin: 0;
+      color: #eee;
       font-size: 1.1rem;
-      font-family: 'Roboto', 'Inconsolata', monospace, Arial, sans-serif;
-      color: #fff;
-      text-shadow: 0 1px 8px #000, 0 0 4px #ff5e62;
-      letter-spacing: 1px;
+      text-shadow: 0 1px 4px #000;
     }
 
     .cta-section {
@@ -349,12 +331,9 @@
   </nav>
   <header class="header">
     <div class="profile-img-wrap">
-      <img src="images/avatar3-1080.jpg"
-        srcset="images/avatar3-500.jpg 500w, images/avatar3-800.jpg 800w, images/avatar3-1080.jpg 1080w, images/avatar3-1600.jpg 1600w, images/avatar3-1920.jpg 1920w"
-        sizes="(max-width: 700px) 90vw, 480px"
-        alt="Helen Coupland portrait"
-        class="profile-img"
-        id="profileImg" />
+      <img src="images/avatar-1080.jpg"
+        srcset="images/avatar-500.jpg 500w, images/avatar-800.jpg 800w, images/avatar-1080.jpg 1080w, images/avatar-1600.jpg 1600w, images/avatar-1920.jpg 1920w"
+        sizes="(max-width: 700px) 80vw, 220px" alt="Helen Coupland portrait" class="profile-img" id="profileImg" />
     </div>
     <h1>Helen Coupland</h1>
     <p>Artist, Writer, Filmmaker</p>
@@ -414,15 +393,16 @@
       if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('active');
     });
 
-    // Profile image zoom on scroll (rectangle version)
+    // Profile image zoom on scroll
     const profileImg = document.getElementById('profileImg');
     window.addEventListener('scroll', () => {
       if (!profileImg) return;
-      const minScale = 1;
-      const maxScale = 1.07;
+      const minScale = 0.8;
+      const maxScale = 1;
       const scrollY = window.scrollY;
       const maxScroll = 300;
-      let scale = minScale + (Math.min(scrollY, maxScroll) / maxScroll) * (maxScale - minScale);
+      let scale = maxScale - (scrollY / maxScroll) * (maxScale - minScale);
+      scale = Math.max(minScale, Math.min(maxScale, scale));
       profileImg.style.transform = `scale(${scale})`;
     });
 
