@@ -397,22 +397,23 @@
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY;
-      lastScrollY = currentScrollY;
-
       document.querySelectorAll('.work-card img').forEach(img => {
-        // Base scale
-        let scale = 1;
-        // If scrolling down, zoom in; if up, zoom out
-        if (scrollingDown) {
-          // Zoom in, up to 1.07
-          scale = 1 + Math.min(currentScrollY, 400) / 400 * 0.07;
-        } else {
-          // Zoom out, down to 1
-          scale = 1 + Math.max(currentScrollY, 0) / 400 * 0.07;
-          scale = Math.max(1, scale - 0.07);
+        const rect = img.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // Calculate how much of the banner is in view (0 = not visible, 1 = fully visible)
+        let visibleRatio = 0;
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          const visibleTop = Math.max(rect.top, 0);
+          const visibleBottom = Math.min(rect.bottom, windowHeight);
+          visibleRatio = (visibleBottom - visibleTop) / rect.height;
         }
+
+        // Only zoom when the banner is in view, and zoom slowly (max scale = 1.07)
+        const minScale = 1;
+        const maxScale = 1.07;
+        // Make the zoom slower by multiplying visibleRatio by 0.7
+        let scale = minScale + Math.max(0, Math.min(visibleRatio * 0.7, 1)) * (maxScale - minScale);
         img.style.transform = `scale(${scale})`;
       });
 
@@ -420,7 +421,7 @@
       if (profileImg) {
         const minScale = 0.8;
         const maxScale = 1;
-        const scrollY = currentScrollY;
+        const scrollY = window.scrollY;
         const maxScroll = 300;
         let scale = maxScale - (scrollY / maxScroll) * (maxScale - minScale);
         scale = Math.max(minScale, Math.min(maxScale, scale));
