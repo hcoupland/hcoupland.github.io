@@ -374,6 +374,15 @@
             display: flex;
             flex-direction: column;
         }
+
+        .contact-wrapper {
+        max-width: 600px;
+        margin: 4rem auto;
+        padding: 2rem;
+        background-color: #111820;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -400,7 +409,8 @@
                     <div class="container-small">
                         <h1 class="heading-style-h3">Contact</h1>
                         <div class="spacer-large"></div>
-                        <form id="contactForm" class="contact-form_form">
+                        <div class="contact-wrapper">
+                        <form action="contact-form-handler.php" method="POST" class="contact-form_form"></form>
                             <div class="contact-form_grid">
                                 <div class="contact-form_input">
                                     <label for="name" class="contact-form_field-label">Name</label>
@@ -426,6 +436,7 @@
                             </div>
                             <div id="formMessage" style="margin-top:1rem;font-size:1rem;"></div>
                         </form>
+                    </div>
                     </div>
                 </div>    </section>
         </main>
